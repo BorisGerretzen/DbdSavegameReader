@@ -1,0 +1,716 @@
+﻿{
+  "versionNumber": 6,
+  "UserID": "1234567890123456",
+  "SelectedCamper": 1,
+  "SelectedSlasher": 268435463,
+  "Experience": 350000,
+  "BonusExperience": 0,
+  "FearTokens": 1000,
+  "FirstTimePlaying": false,
+  "CurrentSeasonTicks": "12345600000000",
+  "LastConnectedCharacterIndex": 1,
+  "OngoingGameTime": "0",
+  "LastConnectedLoadout": {
+    "item": "_EMPTY_",
+    "itemAddOns": [
+      "_EMPTY_",
+      "_EMPTY_"
+    ],
+    "camperPerks": [
+      "_LOCKED_",
+      "_LOCKED_",
+      "_LOCKED_",
+      "_LOCKED_"
+    ],
+    "camperPerkLevels": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "camperFavor": "_EMPTY_",
+    "power": "_EMPTY_",
+    "powerAddOns": [
+      "_EMPTY_",
+      "_EMPTY_"
+    ],
+    "slasherPerks": [
+      "_LOCKED_",
+      "_LOCKED_",
+      "_LOCKED_",
+      "_LOCKED_"
+    ],
+    "slasherPerkLevels": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "slasherFavor": "_EMPTY_"
+  },
+  "CharacterData": [
+    {
+      "CharacterDataID": 2,
+      "CharacterDataValue": {
+        "bloodWebLevel": 26,
+        "prestigeLevel": 0,
+        "timesConfronted": 0,
+        "PrestigeEarnedDates": [],
+        "bloodWebData": {
+          "versionNumber": 4,
+          "level": 1,
+          "ringData": [
+            {
+              "nodeData": [
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "UltraRare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Collected",
+                  "nodeId": "0",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                }
+              ]
+            },
+            {
+              "nodeData": [
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "102",
+                  "contentId": "Addon_Flashlight_001",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Offerings",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "105",
+                  "contentId": "FaintReagent",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "104",
+                  "contentId": "Addon_Key_001",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Offerings",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "106",
+                  "contentId": "PetrifiedOak",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "101",
+                  "contentId": "Addon_Key_001",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "103",
+                  "contentId": "Addon_Key_001",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                }
+              ]
+            },
+            {
+              "nodeData": [
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "208",
+                  "contentId": "Addon_Key_004",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "212",
+                  "contentId": "Addon_Flashlight_003",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "209",
+                  "contentId": "Addon_Map_006",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "204",
+                  "contentId": "Addon_Map_005",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Items",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "210",
+                  "contentId": "Item_Camper_MedKit02",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "205",
+                  "contentId": "Addon_Key_002",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "201",
+                  "contentId": "Addon_Map_003",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Offerings",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "202",
+                  "contentId": "CattleTag28",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Items",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "203",
+                  "contentId": "Item_Camper_BeigeMap",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Items",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "206",
+                  "contentId": "Item_Camper_MedKit02",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "211",
+                  "contentId": "Addon_Flashlight_003",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                }
+              ]
+            },
+            {
+              "nodeData": [
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "VeryRare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "306",
+                  "contentId": "Addon_Key_007",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Items",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "312",
+                  "contentId": "Item_Camper_Toolbox",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Offerings",
+                    "rarity": "UltraRare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "311",
+                  "contentId": "NewMoonBouquet",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "301",
+                  "contentId": "Addon_Map_003",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "307",
+                  "contentId": "Addon_Key_008",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "302",
+                  "contentId": "Addon_Map_005",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "309",
+                  "contentId": "Addon_Medkit_007",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Offerings",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "310",
+                  "contentId": "FreshCrispleafAmaranth",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "303",
+                  "contentId": "Addon_Key_004",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "AddOn",
+                    "rarity": "Rare",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "305",
+                  "contentId": "Addon_Medkit_007",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Items",
+                    "rarity": "Uncommon",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "308",
+                  "contentId": "Item_Camper_MedKit02",
+                  "bloodwebChest": {
+                    "iD": "Chest02",
+                    "rarity": "Uncommon",
+                    "givenItemRarity": [
+                      0,
+                      40,
+                      50,
+                      10,
+                      0
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "nodeData": [
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "403",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "406",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "401",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "404",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "402",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                },
+                {
+                  "properties": {
+                    "contentType": "Empty",
+                    "rarity": "Common",
+                    "tags": []
+                  },
+                  "gates": [],
+                  "state": "Available",
+                  "nodeId": "405",
+                  "contentId": "None",
+                  "bloodwebChest": {
+                    "iD": "None",
+                    "rarity": "Common",
+                    "givenItemRarity": []
+                  }
+                }
+              ]
+            }
+          ],
+          "paths": [
+            "0_102",
+            "0_105",
+            "0_104"
+          ],
+          "entityCurrentNode": ""
+        },
+        "characterLoadoutData": {
+          "item": "Item_Camper_Toolbox",
+          "itemAddOns": [
+            "Addon_Toolbox_007",
+            "Addon_Toolbox_002"
+          ],
+          "camperPerks": [
+            "Empathy",
+            "Self_Care",
+            "Sprint_Burst",
+            "Small_Game"
+          ],
+          "camperPerkLevels": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "camperFavor": "MurkyReagent",
+          "power": "None",
+          "powerAddOns": [
+            "_EMPTY_",
+            "_EMPTY_"
+          ],
+          "slasherPerks": [
+            "_LOCKED_",
+            "_LOCKED_",
+            "_LOCKED_",
+            "_LOCKED_"
+          ],
+          "slasherPerkLevels": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "slasherFavor": "_EMPTY_"
+        },
+        "inventoryData": [
+          {
+            "version": 16,
+            "name": "Item_Camper_MedKit02"
+          },
+          {
+            "version": 16,
+            "name": "Addon_Flashlight_008"
+          },
+          {
+            "version": 16,
+            "name": "Addon_Toolbox_004"
+          },
+          {
+            "version": 16,
+            "name": "SweetWilliamSachet"
+          }
+        ]
+      }
+    }
+  ]
+}
