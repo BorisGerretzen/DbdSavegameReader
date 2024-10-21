@@ -36,6 +36,7 @@ using Project = Nuke.Common.ProjectModel.Project;
     GitHubActionsImage.UbuntuLatest,
     On = [GitHubActionsTrigger.WorkflowDispatch],
     InvokedTargets = [nameof(BuildApp), nameof(PublishApp)],
+    ImportSecrets = [nameof(GithubToken)],
     FetchDepth = 0
 )]
 class Build : NukeBuild
