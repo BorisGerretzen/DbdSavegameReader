@@ -1,6 +1,6 @@
 ﻿# DbdSavegameReader
 
-[![NuGet](https://img.shields.io/nuget/v/DbdSavegameReader.svg)](https://www.nuget.org/packages/DbdSavegameReader/)
+[![NuGet](https://img.shields.io/nuget/v/DbdSavegameReader.Lib.svg)](https://www.nuget.org/packages/DbdSavegameReader.Lib/)
 
 A simple C# library to read and decrypt Dead by Daylight savegame files.
 Also contains a console application that does the same.
