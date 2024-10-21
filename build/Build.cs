@@ -47,9 +47,7 @@ class Build : NukeBuild
     [Nuke.Common.Parameter("API Key for the NuGet server.")] [Secret] readonly string NugetApiKey;
 
     [Nuke.Common.Parameter("NuGet server URL.")] readonly string NugetSource = "https://api.nuget.org/v3/index.json";
-
-    [Nuke.Common.Parameter("NuGet package version.")] readonly string PackageVersion;
-
+    
     [Solution] readonly Solution Solution;
     
     GitHubActions GitHubActions => GitHubActions.Instance;
@@ -117,8 +115,8 @@ class Build : NukeBuild
                 .EnableNoRestore()
                 .SetProject(AppProject)
                 .SetConfiguration(Configuration)
-                .SetAssemblyVersion(PackageVersion)
-                .SetInformationalVersion(PackageVersion)
+                .SetAssemblyVersion(GitVersion.MajorMinorPatch)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
                 .SetFramework("net8.0")
                 .CombineWith(
                     from runtime in new[] {"win-x64", "linux-x64", "osx-x64"}
@@ -144,9 +142,9 @@ class Build : NukeBuild
                 new ProductHeaderValue(nameof(NukeBuild)),
                 new InMemoryCredentialStore(credentials));
             var release = await GitHubTasks.GitHubClient.Repository.Release
-                .Create("BorisGerretzen", "DbdSavegameReader", new NewRelease(PackageVersion)
+                .Create("BorisGerretzen", "DbdSavegameReader", new NewRelease(GitVersion.MajorMinorPatch)
                 {
-                    Name = PackageVersion,
+                    Name = GitVersion.MajorMinorPatch,
                     Draft = true,
                     Body = "Release notes",
                     TargetCommitish = GitVersion.Sha
@@ -173,7 +171,7 @@ class Build : NukeBuild
                 .SetProject(LibProject)
                 .SetConfiguration(Configuration)
                 .SetOutputDirectory(ArtifactsDirectory)
-                .SetProperty("PackageVersion", PackageVersion ?? GitVersion.NuGetVersionV2)
+                .SetProperty("PackageVersion", GitVersion.MajorMinorPatch)
             );
         });
 
