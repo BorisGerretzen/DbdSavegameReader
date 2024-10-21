@@ -19,4 +19,8 @@
         <PackageDownload Include="GitVersion.Tool" Version="[6.0.3]"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="..\.github\workflows\publish.yml" />
+    </ItemGroup>
+
 </Project>
