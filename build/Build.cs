@@ -137,7 +137,14 @@ class Build : NukeBuild
         .Requires(() => Configuration == Configuration.Release)
         .Executes(async () =>
         {
-            var credentials = new Credentials(GitHubActions.Token);
+            var token = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+            if (string.IsNullOrEmpty(token))
+            {
+                Serilog.Log.Warning("GITHUB_TOKEN is not set");
+                token = GitHubActions.Token;
+            }
+            
+            var credentials = new Credentials(token);
             GitHubTasks.GitHubClient = new GitHubClient(
                 new ProductHeaderValue(nameof(NukeBuild)),
                 new InMemoryCredentialStore(credentials));
