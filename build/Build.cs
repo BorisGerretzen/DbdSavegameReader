@@ -143,7 +143,7 @@ class Build : NukeBuild
             if (string.IsNullOrEmpty(token))
             {
                 Serilog.Log.Warning("GITHUB_TOKEN is not set");
-                token = GitHubActions.Token;
+                token = GitHubActions.Instance.Token;
             }
 
             if (string.IsNullOrEmpty(token))
