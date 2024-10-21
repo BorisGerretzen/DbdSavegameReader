@@ -9,6 +9,11 @@
         "Release"
       ]
     },
+    "GithubToken": {
+      "type": "string",
+      "description": "Github token",
+      "default": "Secrets must be entered via 'nuke :secrets [profile]'"
+    },
     "NugetApiKey": {
       "type": "string",
       "description": "API Key for the NuGet server",
