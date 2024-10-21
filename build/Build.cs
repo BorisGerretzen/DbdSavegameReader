@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
@@ -52,8 +51,6 @@ class Build : NukeBuild
     [Nuke.Common.Parameter("Github token")] [Secret] readonly string GithubToken;
     
     [Solution] readonly Solution Solution;
-    
-    GitHubActions GitHubActions => GitHubActions.Instance;
     
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
@@ -140,23 +137,7 @@ class Build : NukeBuild
         .Requires(() => Configuration == Configuration.Release)
         .Executes(async () =>
         {
-            var token = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
-            if (string.IsNullOrEmpty(token))
-            {
-                Serilog.Log.Warning("GITHUB_TOKEN is not set");
-                token = GitHubActions.Instance.Token;
-            }
-
-            if (string.IsNullOrEmpty(token))
-            {
-                Serilog.Log.Warning("GithubActions.Token is not set");
-                token = GithubToken;
-            }
-            
-            if(string.IsNullOrEmpty(token))
-                Serilog.Log.Warning("Github secret is not set");
-            
-            var credentials = new Credentials(token);
+            var credentials = new Credentials(GithubToken);
             GitHubTasks.GitHubClient = new GitHubClient(
                 new ProductHeaderValue(nameof(NukeBuild)),
                 new InMemoryCredentialStore(credentials));
