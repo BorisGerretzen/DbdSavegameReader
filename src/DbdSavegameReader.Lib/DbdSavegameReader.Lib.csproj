@@ -9,6 +9,7 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/BorisGerretzen/DbdSavegameReader.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/BorisGerretzen/DbdSavegameReader</PackageProjectUrl>
         <Authors>Boris Gerretzen</Authors>
         <PackageTags>deadbydaylight;dbd</PackageTags>
         <Description>A C# library for reading Dead by Daylight savegame files.</Description>
