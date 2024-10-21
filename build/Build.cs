@@ -48,6 +48,8 @@ class Build : NukeBuild
 
     [Nuke.Common.Parameter("NuGet server URL.")] readonly string NugetSource = "https://api.nuget.org/v3/index.json";
     
+    [Nuke.Common.Parameter("Github token")] [Secret] readonly string GithubToken;
+    
     [Solution] readonly Solution Solution;
     
     GitHubActions GitHubActions => GitHubActions.Instance;
@@ -143,6 +145,15 @@ class Build : NukeBuild
                 Serilog.Log.Warning("GITHUB_TOKEN is not set");
                 token = GitHubActions.Token;
             }
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Serilog.Log.Warning("GithubActions.Token is not set");
+                token = GithubToken;
+            }
+            
+            if(string.IsNullOrEmpty(token))
+                Serilog.Log.Warning("Github secret is not set");
             
             var credentials = new Credentials(token);
             GitHubTasks.GitHubClient = new GitHubClient(
