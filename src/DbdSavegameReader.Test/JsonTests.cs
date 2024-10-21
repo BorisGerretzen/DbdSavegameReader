@@ -8,7 +8,7 @@ public class JsonTests
     public void DeserializationHandlesAllProperties(string path)
     {
         var json = File.ReadAllText(path);
-        var save = SavegameSerializer.DeserializeJson(json);
+        var save = DbdSerializer.DeserializeJson(json);
 
         Assert.That(save, Is.Not.Null);
         Assert.Multiple(() =>

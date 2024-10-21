@@ -22,13 +22,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="ExampleSave.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+        <None Update="ExampleSave.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DbdSavegameReader.Lib\DbdSavegameReader.Lib.csproj" />
+        <ProjectReference Include="..\DbdSavegameReader.Lib\DbdSavegameReader.Lib.csproj"/>
     </ItemGroup>
 
 </Project>

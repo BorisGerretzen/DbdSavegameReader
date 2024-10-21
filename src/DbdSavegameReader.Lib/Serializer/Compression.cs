@@ -6,7 +6,7 @@ namespace DbdSavegameReader.Lib.Serializer;
 public static class Compression
 {
     /// <summary>
-    /// Decompresses the given data using the zlib algorithm.
+    ///     Decompresses the given data using the zlib algorithm.
     /// </summary>
     /// <param name="compressedData">The compressed data to decompress.</param>
     /// <returns>Decompressed data as a string.</returns>
@@ -20,7 +20,7 @@ public static class Compression
         }
 
         var decompressedBytes = decompressedStream.ToArray();
-        
+
         return Encoding.Unicode.GetString(decompressedBytes);
     }
 }

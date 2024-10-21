@@ -5,14 +5,17 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <PublishSingleFile>true</PublishSingleFile>
+        <SelfContained>true</SelfContained>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
-
     <ItemGroup>
-      <ProjectReference Include="..\DbdSavegameReader.Lib\DbdSavegameReader.Lib.csproj" />
+        <ProjectReference Include="..\DbdSavegameReader.Lib\DbdSavegameReader.Lib.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="ZLibDotNet" Version="0.1.1" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
     </ItemGroup>
 
 </Project>

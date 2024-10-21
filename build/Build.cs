@@ -1,13 +1,20 @@
+using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using Nuke.Common;
 using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
+using Octokit;
+using Octokit.Internal;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
+using Project = Nuke.Common.ProjectModel.Project;
 
 [GitHubActions(
     "test",
@@ -17,32 +24,41 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     FetchDepth = 0
 )]
 [GitHubActions(
-    "publish",
+    "publish library",
     GitHubActionsImage.UbuntuLatest,
     On = [GitHubActionsTrigger.WorkflowDispatch],
     InvokedTargets = [nameof(Pack), nameof(Push)],
     ImportSecrets = [nameof(NugetApiKey)],
     FetchDepth = 0
 )]
+[GitHubActions(
+    "publish app",
+    GitHubActionsImage.UbuntuLatest,
+    On = [GitHubActionsTrigger.WorkflowDispatch],
+    InvokedTargets = [nameof(BuildApp), nameof(PublishApp)],
+    FetchDepth = 0
+)]
 class Build : NukeBuild
 {
-    [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    [Nuke.Common.Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")] readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
     [GitVersion] readonly GitVersion GitVersion;
 
-    [Parameter("API Key for the NuGet server.")] [Secret] readonly string NugetApiKey;
+    [Nuke.Common.Parameter("API Key for the NuGet server.")] [Secret] readonly string NugetApiKey;
 
-    [Parameter("NuGet server URL.")] readonly string NugetSource = "https://api.nuget.org/v3/index.json";
+    [Nuke.Common.Parameter("NuGet server URL.")] readonly string NugetSource = "https://api.nuget.org/v3/index.json";
 
-    [Parameter("NuGet package version.")] readonly string PackageVersion;
+    [Nuke.Common.Parameter("NuGet package version.")] readonly string PackageVersion;
 
     [Solution] readonly Solution Solution;
-
+    
+    GitHubActions GitHubActions => GitHubActions.Instance;
+    
     AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
-    Project MyProject => Solution.GetProject("DbdSavegameReader.Lib");
+    Project LibProject => Solution.GetProject("DbdSavegameReader.Lib");
+    Project AppProject => Solution.GetProject("DbdSavegameReader");
 
     Target Clean => d => d
         .Before(Restore)
@@ -72,22 +88,6 @@ class Build : NukeBuild
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
                 .SetInformationalVersion(GitVersion.InformationalVersion)
             );
-
-            DotNetPublish(s => s
-                .EnableNoRestore()
-                .EnableNoBuild()
-                .SetConfiguration(Configuration)
-                .SetAssemblyVersion(GitVersion.AssemblySemVer)
-                .SetFileVersion(GitVersion.AssemblySemFileVer)
-                .SetInformationalVersion(GitVersion.InformationalVersion)
-                .CombineWith(
-                    from project in new[] { MyProject }
-                    from framework in project.GetTargetFrameworks()
-                    select new { project, framework }, (cs, v) => cs
-                        .SetProject(v.project)
-                        .SetFramework(v.framework)
-                )
-            );
         });
 
     Target Test => d => d
@@ -97,15 +97,69 @@ class Build : NukeBuild
             DotNetTest(s => s
                 .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
-                .SetFramework("net8.0")
                 .EnableNoRestore()
                 .EnableNoBuild()
                 .CombineWith(
-                    from framework in MyProject.GetTargetFrameworks()
+                    from framework in LibProject.GetTargetFrameworks()
                     select new { framework }, (cs, v) => cs
                         .SetFramework(v.framework)
                 )
             );
+        });
+
+    Target BuildApp => d => d
+        .DependsOn(Clean, Test)
+        .Requires(() => Configuration == Configuration.Release)
+        .Produces(ArtifactsDirectory / "*.zip")
+        .Executes(() =>
+        {
+            DotNetPublish(s => s
+                .EnableNoRestore()
+                .SetProject(AppProject)
+                .SetConfiguration(Configuration)
+                .SetAssemblyVersion(PackageVersion)
+                .SetInformationalVersion(PackageVersion)
+                .SetFramework("net8.0")
+                .CombineWith(
+                    from runtime in new[] {"win-x64", "linux-x64", "osx-x64"}
+                    select new { runtime }, (cs, v) => cs
+                        .SetRuntime(v.runtime)
+                        .SetOutput(ArtifactsDirectory / "app" / v.runtime))
+            );
+
+            var directories = ArtifactsDirectory.GlobDirectories("app/*");
+            foreach (var directory in directories)
+            {
+                directory.ZipTo(ArtifactsDirectory / $"DbdSavegameReader-{directory.Name}.zip");
+            }
+        });
+    
+    Target PublishApp => d => d
+        .After(BuildApp)
+        .Requires(() => Configuration == Configuration.Release)
+        .Executes(async () =>
+        {
+            var credentials = new Credentials(GitHubActions.Token);
+            GitHubTasks.GitHubClient = new GitHubClient(
+                new ProductHeaderValue(nameof(NukeBuild)),
+                new InMemoryCredentialStore(credentials));
+            var release = await GitHubTasks.GitHubClient.Repository.Release
+                .Create("BorisGerretzen", "DbdSavegameReader", new NewRelease(PackageVersion)
+                {
+                    Name = PackageVersion,
+                    Draft = true,
+                    Body = "Release notes",
+                    TargetCommitish = GitVersion.Sha
+                });
+            
+            var zips = ArtifactsDirectory.GlobFiles("*.zip");
+            foreach (var zip in zips)
+            {
+                await using var stream = File.OpenRead(zip);
+                var releaseAsset = new ReleaseAssetUpload(zip.Name, "application/zip", stream, TimeSpan.FromMinutes(1));
+                await GitHubTasks.GitHubClient.Repository.Release
+                    .UploadAsset(release, releaseAsset);
+            }
         });
 
     Target Pack => d => d
@@ -116,7 +170,7 @@ class Build : NukeBuild
             DotNetPack(s => s
                 .EnableNoRestore()
                 .EnableNoBuild()
-                .SetProject(MyProject)
+                .SetProject(LibProject)
                 .SetConfiguration(Configuration)
                 .SetOutputDirectory(ArtifactsDirectory)
                 .SetProperty("PackageVersion", PackageVersion ?? GitVersion.NuGetVersionV2)
